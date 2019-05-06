@@ -1,5 +1,10 @@
 # memo
 
+github上にリポジトリを作ってローカルにclone
+
+    git clone git@xxxx
+
+
 Heroku使うのでポスグレで
 
     rails new . --database=postgresql
@@ -19,6 +24,15 @@ routing設定する。
 
 * indexは表示確認用
 * createをWebHook URLに使う（これがメイン）
+
+サンプルを参考にactionを実装する
+[これはsinatraだけど大体こんなかんじ](https://github.com/line/line-bot-sdk-ruby)
+
+忘れがちなHerokuの最低限の使い方
+
+* heroku login : ログインしておく
+* heroku create : Heroku上にアプリを作る
+* git push heroku master : デプロイ
 
 Herokuに環境変数を設定する。
 
