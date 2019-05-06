@@ -1,24 +1,35 @@
-# README
+# memo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Heroku使うのでポスグレで
 
-Things you may want to cover:
+    rails new . --database=postgresql
 
-* Ruby version
+以下gemを追加
 
-* System dependencies
+    gem 'line-bot-api'
+    gem 'dotenv-rails'
 
-* Configuration
+適当にcontrollerを作る。今回はechoesにした（echoするだけだから）
 
-* Database creation
+    rails g controller echoes
 
-* Database initialization
+routing設定する。
 
-* How to run the test suite
+    resources :echos, only [:index, :create]
 
-* Services (job queues, cache servers, search engines, etc.)
+* indexは表示確認用
+* createをWebHook URLに使う（これがメイン）
 
-* Deployment instructions
+Herokuに環境変数を設定する。
 
-* ...
+    heroku config:set LINE_CHANNEL_SECRET=xxxx
+    heroku config:set LINE_CHANNEL_TOKEN=xxxx
+
+* LINE_CHANNEL_TOKENは「メッセージ送受信設定」でアクセストークンを再発行すると出る
+* LINE_CHANNEL_SECRETは「基本情報」に表示されてる
+
+開発環境用の環境変数はdotenv_railsで設定する。.envファイルを作ってそこに書けばOK
+
+    LINE_CHANNEL_SECRET=xxxx
+    LINE_CHANNEL_TOKEN=xxxx
+
